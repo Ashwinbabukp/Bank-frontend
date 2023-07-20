@@ -1,0 +1,91 @@
+<!-- header -->
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="">
+                <i class="fa-solid fa-building-columns fa-bounce"></i>
+                <span class="fw-bold" style="color: #64b4f6ed;">Paytm</span>-Bank
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- content -->
+<div class="container">
+    <h1>
+        <span class="fw-bold" style="color: #64b4f6ed;">Paytm</span>-Bank
+    </h1>
+    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam
+        iste reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam iste
+        reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam iste
+        reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.
+    </p>
+</div>
+
+
+<!-- main content -->
+<div class="container mt-5 ">
+    <div class="row align-item-center">
+        <div class="col ">
+            <img class="img-fluid mt-4"  style="height: 500px; width: 90%; "
+                src="https://cdn.kibrispdr.org/data/1760/digital-marketing-animated-gif-50.gif"
+                alt="register-page">
+        </div>
+        <div class="col-lg-6">
+            <form [formGroup]="registerForm" class="mt-5" (ngSubmit)="register()">
+                <h1>Sign-<span class="fw-bolder" style="color: #64b4f6ed;">up</span></h1>
+                <!-- user-name -->
+                <div class="mb-3 mt-4">
+                    <label for="exampleInputName" class="form-label">User Name</label>
+                    <input name="username" formControlName="username" type="text" class="form-control" id="Username"
+                        placeholder=" Enter User Name" aria-describedby="emailHelp">
+                </div>
+                <!-- username validation -->
+                <div *ngIf="this.registerForm.get('username')?.touched&&this.registerForm.get('username')?.errors"
+                    class="mb-3 text-danger">
+                    *Invalid Username!
+                </div>
+
+                <!-- acc-no. -->
+                <div class="mb-3 mt-4">
+                    <label class="form-label">Account number</label>
+                    <input name="acno" formControlName="acno" type="text" class="form-control" id="account-number"
+                        placeholder=" Enter Account number">
+                </div>
+
+                <!-- accno validation -->
+                <div *ngIf="this.registerForm.get('acno')?.touched&&this.registerForm.get('acno')?.errors"
+                class="mb-3 text-danger">
+                *Invalid Accound Number!
+                </div>
+
+                <!--password  -->
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input name="pswd" formControlName="pswd" type="password" placeholder="Enter Password"
+                        class="form-control" id="psw">
+                </div>
+                <!-- pswd validation -->
+                <div *ngIf="this.registerForm.get('pswd')?.touched&&this.registerForm.get('pswd')?.errors"
+                class="mb-3 text-danger">
+                *Invalid Password!
+                </div>
+                <p>Already a user? Click here to <a routerLink="../login">Login</a></p>
+                <button type="submit" class="btn"
+                    style="background-color: #64b4f6ed; color: aliceblue;">Sign-up</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer>
+    <app-footer></app-footer>
+</footer>

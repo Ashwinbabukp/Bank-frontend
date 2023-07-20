@@ -1,0 +1,8 @@
+.main-header{
+    text-align: center;
+}
+.balancesec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,49 @@
+<div class="p-5 container">
+    <h1>Mini <span style="color: #64b4f6ed;">Statement</span></h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur dolorum quam modi laborum perferendis
+        quibusdam eius commodi possimus ex reprehenderit ipsam nemo corrupti nobis voluptatum iusto, obcaecati quas
+        voluptatibus?</p>
+</div>
+
+<div class="alltransaction container">
+    <h3 class="fw-bold">Alltransaction</h3>
+    
+    <!-- search -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <input placeholder="Search transaction type" name="searchBox" [(ngModel)]="search_key" type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn" type="button" (click)="generatePdf()" style="background-color:#64b4f6ed;">
+                <i class="fa-solid fa-upload"></i>Export</a>
+        </div>
+    </div>
+
+    <table id="userDetails" class="table">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Transaction type</th>
+                <th scope="col">From Accound</th>
+                <th scope="col">To Accound</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of allTransactions | search : search_key : 'transaction_type' ;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{transaction.transaction_type}}</td>
+                <td>{{transaction.fromAcno}}</td>
+                <td>{{transaction.toAcno}}</td>
+                <td>{{transaction.amount}}</td>
+            </tr>
+            <tr *ngIf="(allTransactions | search : search_key : 'transaction_type' ).length ==0 && search_key != ''" >
+                <td></td>
+                <td></td>
+                <td class="text-danger text-center fw-bold text-uppercase">
+                    <h3>Search key is not found!</h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

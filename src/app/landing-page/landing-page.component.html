@@ -1,0 +1,40 @@
+<!-- footer -->
+<header>
+    <app-header></app-header>
+</header>
+
+
+<!-- main content -->
+<div class="container mt-5 ">
+    <div class="row align-item-center">
+        <div class="col">
+            <img class="img-fluid" style="border-radius: 30px;"
+                src="https://miro.medium.com/v2/resize:fit:1358/1*3Vh4UkyiZl_zEPQ8-3rW1Q.gif" alt="landing page">
+        </div>
+        <div class="col-lg-6 mt-5 ">
+            <h1 class="fw-bolder">welcome to <span class="fw-bold" style="color: #64b4f6ed;">Paytm</span>-Bank</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, ea eius? Itaque, enim optio mollitia
+                voluptate, incidunt quod, magnam consequuntur ipsa sed esse rerum nemo alias illo? Necessitatibus, at
+                beatae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni ipsum exercitationem minus
+                obcaecati molestiae vitae pariatur commodi hic facilis sit omnis recusandae debitis provident libero
+                distinctio, voluptas necessitatibus similique officia! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Ipsum reprehenderit dolore et odio sed voluptas veritatis, perspiciatis vitae, alias
+                quas incidunt iusto asperiores magni harum dolorum officiis temporibus animi exercitationem!
+            </p>
+            <div class="collapse" id="collapseExample">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit quo cumque error natus labore, architecto
+                reiciendis tempore corporis dolorum consequatur quod voluptates facere doloremque dolores ab distinctio
+                esse sed commodi.
+            </div>
+            <!-- button -->
+            <button  (click)="toggle()" class="btn fw-bold" style="background-color: #64b4f6ed; color: aliceblue;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Read <span  *ngIf="isReadMore" >more</span><span  *ngIf="!isReadMore">Less</span>
+              </button>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer>
+    <app-footer></app-footer>
+</footer>

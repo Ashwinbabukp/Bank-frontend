@@ -1,0 +1,148 @@
+<header>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">
+        <i class="fa-solid fa-building-columns fa-bounce"></i>
+        <span class="fw-bold" style="color: #64b4f6ed;"> Paytm</span>-Bank
+      </a>
+      <div class="button">
+        <div class="dropdown">
+          <button class="btn  fw-bold dropdown-toggle" style="color: #64b4f6ed;" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-gear"></i> Accound settings
+          </button>
+          <ul class="dropdown-menu mt-3">
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticDelete">Accound Delete</a></li>
+            <li><a class="dropdown-item" (click)="logoutAcno(0)">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container mt-4 ">
+  <h1>Welcome <span style="color: #64b4f6ed;">{{user}}...</span></h1>
+</div>
+
+<div class="hero">
+  <div class="main-header">
+    <h1 class="p-5"><span style="color: #64b4f6ed;">Paytm</span> Services</h1>
+  </div>
+  <div class="services row">
+    <div (click)="getbalance()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" class="col">
+
+      <a>
+        <img class="img-fluid" style="cursor: pointer;"
+          src="https://img.freepik.com/premium-vector/person-searching-checking-inspecting-with-magnifying-glass-vector-cartoon-flat-elements-isolated-background_76964-19548.jpg"
+          alt="">
+        <h2 class="text-center">Enquiry</h2>
+      </a>
+    </div>
+    <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="col">
+
+      <a><img class="img-fluid" style="cursor: pointer;"
+          src="https://i.pinimg.com/736x/69/3c/20/693c200ad675967032f941cf76953b3e.jpg" alt=""></a>
+      <h2 class="text-center">Transaction</h2>
+    </div>
+    <div class="col">
+      <a>
+        <img routerLink="/user/transactions" class="img-fluid" style="cursor: pointer;"
+          src="https://img.freepik.com/premium-vector/tiny-characters-huge-transaction-history-payment-recipe-man-buyer-holding-credit-card-online-payment-woman-with-glass-cashless-paying-shopping-store-cartoon-people-vector-illustration_87771-11353.jpg?w=2000"
+          alt="">
+        <h2 class="text-center">Mini statement</h2>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+<!-- off canvas -->
+<div *ngIf="balanceSuccessStatus" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold " id="offcanvasExampleLabel"> <span style="color: #64b4f6ed;">Paytm</span>
+      Balance</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <img class="img-fluid"
+    src="https://img.freepik.com/premium-vector/business-audit-documents-with-charts-financial-report-analytics-flat-cartoon-illustration_2175-9592.jpg?w=2000"
+    alt="">
+  <div class="offcanvas-body">
+    <div class="balancesec">
+      <h4>Hey! <span style="font-weight: 600;">{{user}}</span></h4>
+      <p>Your current balance is <span style=" font-weight: 600; color: brown;">{{balance}}</span></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Found Transfer</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <img
+            src="https://media.istockphoto.com/id/1351302875/vector/easy-money-transfer-related-cartoon-style-vector-illustration.jpg?s=170667a&w=0&k=20&c=oi_KqLOYrGeuhSo7lr7ju980B0dNont1RXueVp6RI5w="
+            alt="found">
+        </div>
+        <form [formGroup]="transferForm">
+          <!-- acno -->
+          <div class="mb-3">
+            <input name="acno" formControlName="acno" type="number" class="form-control" id="exampleInputEmail1"
+              placeholder="Credit Account Number" aria-describedby="emailHelp">
+          </div>
+          <!-- acnovalidation -->
+          <div *ngIf="this.transferForm.get('acno')?.touched&&this.transferForm.get('acno')?.errors"
+            class="mb-3 text-danger">
+            *Invalid Accound Number!
+          </div>
+          <!-- amount -->
+          <div class="mb-3">
+            <input name="amount" formControlName="amount" type="number" class="form-control" placeholder="Amount"
+              id="amound" aria-describedby="emailHelp">
+          </div>
+          <!-- amount validation -->
+          <div *ngIf="this.transferForm.get('amount')?.touched&&this.transferForm.get('amount')?.errors"
+            class="mb-3 text-danger">
+            *Enter a valid amount!
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button (click)="transfer()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Transfer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="staticDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><span class="fw-bold" style="color: #64b4f6ed;">
+            Paytm</span>-Bank</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="p-3">Are you sure you want delete this accound</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteAcno()" >Understood</button>
+      </div>
+    </div>
+  </div>
+</div>

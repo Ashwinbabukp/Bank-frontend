@@ -1,0 +1,73 @@
+<!-- header -->
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="">
+                <i class="fa-solid fa-building-columns fa-bounce"></i>
+                <span class="fw-bold" style="color: #64b4f6ed;"> Paytm</span>-Bank
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- content -->
+<div class="container">
+    <h1>
+        <span class="fw-bold" style="color: #64b4f6ed;">Paytm</span>-Bank
+    </h1>
+    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam iste reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam iste reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum sit magnam ipsa ipsam iste reiciendis
+        ea quos! Quibusdam pariatur voluptatem, perspiciatis repudiandae non maiores? Mollitia neque repudiandae officia
+        quam.
+    </p>
+</div>
+
+
+<!-- main content -->
+<div class="container mt-5 ">
+    <div class="row align-item-center">
+        <div class="col">
+            <img class="img-fluid" style="height: 100%; width: 90%; "
+                src="https://financeadvisoras.com/assets/images/secure-login.gif" alt="log-page">
+        </div>
+        <div class="col-lg-6">
+            <form [formGroup]="loginForm" class="mt-5" (ngSubmit)="login()">
+                <h1>Log-<span class="fw-bolder" style="color: #64b4f6ed;">in</span></h1>
+
+                <div class="mb-3 mt-4">
+                  <label for="exampleInputEmail1" class="form-label">Account number</label>
+                  <input name="acno" formControlName="acno" type="text" class="form-control" id="account-number" placeholder=" Enter Account number" aria-describedby="emailHelp">
+                </div>
+                <!-- accno validation -->
+                <div *ngIf="this.loginForm.get('acno')?.touched&&this.loginForm.get('acno')?.errors"
+                class="mb-3 text-danger">
+                *Invalid Accound Number!
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input name="pswd" formControlName="pswd" type="password" placeholder="Enter Password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <!-- pswd valodation -->
+                <div *ngIf="this.loginForm.get('pswd')?.touched&&this.loginForm.get('pswd')?.errors"
+                class="mb-3 text-danger">
+                *Invalid Password!
+                </div>
+                <p>Are you a new user? Click here to <a routerLink="../register">Register</a></p>
+                <button type="submit" class="btn" style="background-color: #64b4f6ed;">Log-in
+                <!-- spinner icon  (inside the button content*imp)-->
+                <div *ngIf="isLogined" class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                </div>
+                </button>
+              </form>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer>
+    <app-footer></app-footer>
+</footer>

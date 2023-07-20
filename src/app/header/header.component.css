@@ -1,0 +1,12 @@
+header{
+    background: url(../../assets/header-img.jpg);
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.btn{
+    background-color: #64b4f6ed;
+    color: #fff;
+    
+}
